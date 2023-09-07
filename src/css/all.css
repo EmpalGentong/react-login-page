@@ -2,3 +2,27 @@ a.active {
   color: blue;
   font-weight: bold;
 }
+
+div .cardForm {
+  display: block;
+  margin: 15px auto;
+  max-width: 90%;
+  width: 100%;
+  border: 2px solid black;
+}
+
+form {
+  margin: auto 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+button.btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0px auto;
+}
+
+div.button {
+  text-align: center;
+}

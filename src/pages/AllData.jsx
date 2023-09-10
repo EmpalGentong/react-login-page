@@ -13,6 +13,7 @@ const AllData = () => {
         const urll = `/getdata/${data.id}`;
         return (
           <div key={data.id} className="link-detailed">
+            {">"}
             <Link className="link-detailed" to={urll}>
               {data.id + "   " + data.email}
             </Link>

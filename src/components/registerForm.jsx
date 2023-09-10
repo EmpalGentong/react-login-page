@@ -1,25 +1,41 @@
+import { useState } from "react";
+
 const RegisterForm = () => {
+  const [isPending, setIsPending] = useState(false);
+  const [newUser, setNewUser] = useState("");
+
   const handlleSubmit = (e) => {
     e.preventDefault();
     const documents = document.forms[0];
     const name = documents.elements["name"].value;
     const email = documents.elements["email"].value;
     const password = documents.elements["password"].value;
-    // console.log(document.forms[0]);
-    setTimeout(() => {
-      fetch("http://localhost:4500/getall")
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((e) => {
-          console.log(e.message);
-        });
-    }, 1000);
 
-    console.log(name, email, password);
+    // console.log(document.forms[0]);
+
+    const user = { name, email, password };
+
+    fetch("http://localhost:4500/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    })
+      .then((res) => {
+        if (res.status === 400) {
+          throw Error("this email already used");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        setIsPending(true);
+
+        setNewUser(res.message);
+        setIsPending(false);
+      })
+      .catch((e) => {
+        setIsPending(false);
+        setNewUser(e.message);
+      });
   };
 
   return (
@@ -70,14 +86,27 @@ const RegisterForm = () => {
           ></input>
         </div>
         <div className="button">
-          <button
-            type="submit"
-            onClick={handlleSubmit}
-            className="center btn btn-primary"
-          >
-            Register
-          </button>
+          {!isPending && (
+            <button
+              type="submit"
+              onClick={handlleSubmit}
+              className="center btn btn-primary"
+            >
+              Register
+            </button>
+          )}
+
+          {isPending && (
+            <button
+              type="submit"
+              onClick={handlleSubmit}
+              className="center btn btn-primary"
+            >
+              Registering New User
+            </button>
+          )}
         </div>
+        <p>{newUser}</p>
       </form>
     </div>
   );

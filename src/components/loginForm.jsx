@@ -5,7 +5,9 @@ const LoginForm = () => {
     const email = documents.elements["email"].value;
     const password = documents.elements["password"].value;
     // console.log(document.forms[0]);
-    console.log(email, password);
+
+    const object = { email: email, password: password };
+    console.log(object);
   };
 
   return (

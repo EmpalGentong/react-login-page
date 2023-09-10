@@ -9,7 +9,9 @@ const GetData = () => {
 
   return (
     <>
-      <p key={datas.id}>{datas.email}</p>
+      <p key={datas.id}>
+        {datas.email + " belongs to " + datas.name + " with id: " + datas.id}
+      </p>
     </>
   );
 };

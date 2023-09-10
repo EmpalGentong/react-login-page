@@ -1,4 +1,27 @@
 const RegisterForm = () => {
+  const handlleSubmit = (e) => {
+    e.preventDefault();
+    const documents = document.forms[0];
+    const name = documents.elements["name"].value;
+    const email = documents.elements["email"].value;
+    const password = documents.elements["password"].value;
+    // console.log(document.forms[0]);
+    setTimeout(() => {
+      fetch("http://localhost:4500/getall")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+    }, 1000);
+
+    console.log(name, email, password);
+  };
+
   return (
     <div className="card cardForm">
       <form>
@@ -7,9 +30,11 @@ const RegisterForm = () => {
             Your Name Here
           </label>
           <input
+            required
             type="text"
             className="form-control"
             id="name"
+            name="name"
             aria-describedby="nameHelp"
           ></input>
           <div id="nameHelp" className="form-text">
@@ -21,7 +46,9 @@ const RegisterForm = () => {
             Email address
           </label>
           <input
+            required
             type="email"
+            name="email"
             className="form-control"
             id="Email"
             aria-describedby="emailHelp"
@@ -34,10 +61,20 @@ const RegisterForm = () => {
           <label htmlFor="Password" className="form-label">
             Password
           </label>
-          <input type="password" className="form-control" id="Password"></input>
+          <input
+            required
+            type="password"
+            className="form-control"
+            name="password"
+            id="Password"
+          ></input>
         </div>
         <div className="button">
-          <button type="submit" className="center btn btn-primary">
+          <button
+            type="submit"
+            onClick={handlleSubmit}
+            className="center btn btn-primary"
+          >
             Register
           </button>
         </div>

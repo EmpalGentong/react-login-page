@@ -1,8 +1,7 @@
 // import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import "../css/Homepage.css";
 import "../css/all.css";
-import Navbar from "../components/navbar";
 
 const Card = () => {
   return (
@@ -11,9 +10,9 @@ const Card = () => {
         <div className="card-body">
           <h5 className="card-title">Register</h5>
           <p className="card-text">Register your new Account</p>
-          <a href="/register" className="btn btn-primary">
+          <Link to="/register" className="btn btn-primary">
             Click Here To Register
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -21,9 +20,9 @@ const Card = () => {
         <div className="card-body">
           <h5 className="card-title">Login</h5>
           <p className="card-text">Login With Your Account</p>
-          <a href="/login" className="btn btn-primary">
-            Click here to Login
-          </a>
+          <Link to="/login" className="btn btn-primary">
+            LOGIN NOW
+          </Link>
         </div>
       </div>
     </div>
@@ -31,13 +30,7 @@ const Card = () => {
 };
 
 function Homepage() {
-  return (
-    <>
-      <Navbar />
-      <h1 className="welcome text-center">Welcome to this starter project</h1>
-      <Card />
-    </>
-  );
+  return <Card />;
 }
 
 export default Homepage;

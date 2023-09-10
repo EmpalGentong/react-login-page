@@ -1,4 +1,13 @@
 const LoginForm = () => {
+  const handlleSubmit = (e) => {
+    e.preventDefault();
+    const documents = document.forms[0];
+    const email = documents.elements["email"].value;
+    const password = documents.elements["password"].value;
+    // console.log(document.forms[0]);
+    console.log(email, password);
+  };
+
   return (
     <div className="card cardForm">
       <form>
@@ -9,6 +18,7 @@ const LoginForm = () => {
           <input
             type="email"
             className="form-control"
+            name="email"
             id="Email"
             aria-describedby="emailHelp"
           ></input>
@@ -21,10 +31,19 @@ const LoginForm = () => {
           <label htmlFor="Password" className="form-label">
             Password
           </label>
-          <input type="password" className="form-control" id="Password"></input>
+          <input
+            type="password"
+            className="form-control"
+            name="password"
+            id="Password"
+          ></input>
         </div>
         <div className="button">
-          <button type="submit" className="center btn btn-primary">
+          <button
+            type="submit"
+            onClick={handlleSubmit}
+            className="center btn btn-primary"
+          >
             Login
           </button>
         </div>

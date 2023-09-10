@@ -11,6 +11,18 @@ div .cardForm {
   border: 2px solid black;
 }
 
+.nav-link:hover {
+  color: blue;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.nav-link:active {
+  color: red;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 form {
   margin: auto 10px;
   padding-top: 10px;
@@ -25,4 +37,20 @@ button.btn {
 
 div.button {
   text-align: center;
+}
+
+button.btn:hover {
+  background-color: green;
+}
+
+.link-detailed {
+  text-decoration: none;
+  font-weight: bold;
+  color: blue;
+  padding: 10px;
+}
+
+.link-detailed:hover {
+  color: red;
+  text-decoration: underline;
 }

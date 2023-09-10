@@ -36,6 +36,11 @@ const Navbar = () => {
                   register
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/getdata" className="nav-link">
+                  get Data
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
